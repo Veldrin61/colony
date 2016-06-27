@@ -9,7 +9,8 @@ var desired_population =
 var maxEnergy = function(spawn) {
 	var fromSpawn = 300; // spawn
 	var level = spawn.room.controller.level;
-	var fromExts = spawn.room.find(STRUCTURE_EXTENSION).length * EXTENSION_ENERGY_CAPACITY[level];
+	var exts = _.filter(Game.spawns.Spawn.room.find(FIND_STRUCTURES), (s) => {return s.structureType == STRUCTURE_EXTENSION}).length;
+	var fromExts = exts * EXTENSION_ENERGY_CAPACITY[level];
 	return fromSpawn + fromExts;
 };
 
