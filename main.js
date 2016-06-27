@@ -1,8 +1,11 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
+var hatch = require('strategy.hatch');
 
 module.exports.loop = function () {
+
+    hatch.run(Game.creeps);
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
