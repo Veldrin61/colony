@@ -1,8 +1,8 @@
 var desired_population = 
 {
-	'harvester': {'count': 3, setup: [WORK, CARRY, MOVE]},
-	'builder': {'count': 3, setup: [WORK, CARRY, MOVE]},
-	'upgrader': {'count': 8, setup: [WORK, CARRY, MOVE]}
+	'harvester': {'count': 3, 'setup': [WORK, CARRY, CARRY, MOVE]},
+	'builder': {'count': 8, 'setup': [WORK, CARRY, MOVE]},
+	'upgrader': {'count': 10, 'setup': [WORK, CARRY, MOVE]}
 }
 
 var hatch = {
@@ -17,9 +17,11 @@ var hatch = {
 		    
 			if(cnt < desired_population[key].count){
 				var src_id = (Math.floor(Math.random() * (1000 - 10)) + 10) % 2;
-				Game.spawns.Spawn.createCreep( desired_population[key].setup, key + (cnt+1), {role: key, source_id: src_id} );
-				console.log('spawning:' + key);
-				return;
+				for(var j=0; j<desired_population[key].count; ++j){
+					Game.spawns.Spawn.createCreep( desired_population[key].setup, key + j, {role: key, source_id: src_id} );
+					console.log('spawning:' + key);
+					return;
+				}
 			}
 		}
 	}
