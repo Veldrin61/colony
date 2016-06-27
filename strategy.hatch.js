@@ -2,7 +2,7 @@ var desired_population =
 {
 	'harvester': {'count': 4, type: 'worker'},
 	'builder': {'count': 4, type: 'worker'},
-	'upgrader': {'count': 4, type: 'worker'},
+	'upgrader': {'count': 6, type: 'worker'},
 	'repairer': {'count': 2, type: 'worker'}
 };
 
