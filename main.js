@@ -10,7 +10,7 @@ var hatch = require('strategy.hatch');
 module.exports.loop = function () {
 
     if(!Game.spawns.Spawn.spawning)
-        hatch.run(Game.creeps);
+        hatch.run(Game.spawns.Spawn);
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];

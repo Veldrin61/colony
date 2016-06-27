@@ -23,9 +23,9 @@ var composeWorker = function(spawn) {
 };
 
 var hatch = {
-	run: function(creeps_d, spawn) {
+	run: function(spawn) {
 
-		var creeps = Object.keys(creeps_d).map(function(k) {return creeps_d[k];});
+		var creeps = Object.keys(Game.creeps).map(function(k) {return Game.creeps[k];});
         var keys = Object.keys(desired_population);
         
 		for(var i=0; i<keys.length; ++i){
