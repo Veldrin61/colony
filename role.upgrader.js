@@ -1,3 +1,5 @@
+var src_find = require('tactics.sourceSelect')
+
 var roleUpgrader = {
 
     /** @param {Creep} creep **/
