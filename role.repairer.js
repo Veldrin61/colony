@@ -1,3 +1,5 @@
+var src_find = require('tactics.sourceSelect')
+
 var repairer = {
 	run: function(creep) {
 		if(creep.memory.repairing && creep.carry.energy == 0) {
