@@ -4,7 +4,7 @@ var roleUpgrader = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-	    if(creep.carry.energy == 0) {
+	    if(creep.carry.energy < creep.carryCapacity) {
             src_find.run(creep);
         }
         else {
