@@ -6,7 +6,10 @@ var desired_population =
 }
 
 var hatch = {
-	run: function(creeps){
+	run: function(creeps_d){
+
+		var creeps = Object.keys(creeps_d).map(function(k) {return creeps_d[k];});
+
 		for(var key in Object.keys(desired_population)){
 			var cnt = _.filter(creeps, function(o) {o.memory.role == key}).length;
 			if(cnt < desired_population[key]){
