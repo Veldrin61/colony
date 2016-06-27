@@ -9,7 +9,7 @@ var desired_population =
 };
 
 var composeWorker = function(spawn) {
-	var total = roomUtils.maxEnergy(spawn) - BODYPART_COST['move'];
+	var total = roomUtils.run(spawn) - BODYPART_COST['move'];
 	var result = [MOVE];
 	for(var i=0; i<total; ++i){
 		result.push(WORK);
