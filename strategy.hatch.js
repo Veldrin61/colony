@@ -1,8 +1,9 @@
 var desired_population = 
 {
-	'harvester': {'count': 3, 'setup': [WORK, CARRY, CARRY, MOVE]},
+	'harvester': {'count': 3, 'setup': [WORK, CARRY, MOVE]},
 	'builder': {'count': 8, 'setup': [WORK, CARRY, MOVE]},
-	'upgrader': {'count': 10, 'setup': [WORK, CARRY, MOVE]}
+	'upgrader': {'count': 10, 'setup': [WORK, CARRY, MOVE]},
+	'repairer': {'count': 2, 'setup': [WORK, CARRY, MOVE]}
 }
 
 var hatch = {
