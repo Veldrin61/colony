@@ -1,13 +1,29 @@
+var roomUtils = require('strategy.roomUtils');
+
 var desired_population = 
 {
-	'harvester': {'count': 4, 'setup': [WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE]},
-	'builder': {'count': 4, 'setup': [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE]},
-	'upgrader': {'count': 4, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
-	'repairer': {'count': 1, 'setup': [WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE]}
-}
+	'harvester': {'count': 4, type: 'worker'},
+	'builder': {'count': 4, type: 'worker'},
+	'upgrader': {'count': 4, type: 'worker'},
+	'repairer': {'count': 1, type: 'worker'}
+};
+
+var composeWorker = function(spawn) {
+	var total = roomUtils.maxEnergy(spawn) - BODYPART_COST['move'];
+	var result = [MOVE];
+	for(var i=0; i<total; ++i){
+		result.push(WORK);
+		result.push(CARRY);
+		total -= BODYPART_COST['work'] + BODYPART_COST['carry'];
+	}
+
+	if(total >= BODYPART_COST['carry'])
+		result.push(CARRY);
+	return result;
+};
 
 var hatch = {
-	run: function(creeps_d){
+	run: function(creeps_d, spawn) {
 
 		var creeps = Object.keys(creeps_d).map(function(k) {return creeps_d[k];});
         var keys = Object.keys(desired_population);
@@ -18,10 +34,12 @@ var hatch = {
 		    
 			if(cnt < desired_population[key].count){
 				var src_id = (Math.floor(Math.random() * (1000 - 10)) + 10) % 2;
-				for(var j=0; j<desired_population[key].count; ++j){
-				    var result = Game.spawns.Spawn.createCreep( desired_population[key].setup, key + j, {role: key, source_id: src_id} );
-					console.log('spawning:' + key, result);
-					if(result != -3) return;
+				for(var j=0; j<desired_population[key].count; ++j) {
+					var xst = Game.creeps[key + j];
+					if(!xst) {
+						spawn.createCreep(composeWorker(spawn), key + j, {role: key, source_id: src_id} );
+						return;
+					}
 				}
 			}
 		}
