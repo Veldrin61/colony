@@ -1,9 +1,9 @@
 var desired_population = 
 {
-	'harvester': {'count': 3, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
-	'builder': {'count': 8, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
-	'upgrader': {'count': 5, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
-	'repairer': {'count': 2, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]}
+	'harvester': {'count': 4, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
+	'builder': {'count': 4, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
+	'upgrader': {'count': 4, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]},
+	'repairer': {'count': 1, 'setup': [WORK, WORK, CARRY, CARRY, MOVE]}
 }
 
 var hatch = {
