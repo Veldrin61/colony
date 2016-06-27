@@ -18,6 +18,7 @@ module.exports.loop = function () {
         if(creep.ticksToLive <= 600){
             creep.moveTo(Game.spawns.Spawn);
             Game.spawns.Spawn.renewCreep(creep);
+            continue;
         }
 
         roleModel[creep.memory.role].run(creep);
