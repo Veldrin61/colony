@@ -12,7 +12,8 @@ var repairer = {
         if(creep.memory.repairing) {
             var targets = creep.room.find(FIND_STRUCTURES);
             targets = _.filter(targets, (str) => {
-            	return str.hits < str.hitsMax * 0.8;
+            	var isWall = str.type == STRUCTURE_WALL;
+            	return isWall && str.hits <= 50000 || str.hits < str.hitsMax * 0.8;
             });
             if(targets.length) {
                 if(creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
