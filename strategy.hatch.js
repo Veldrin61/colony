@@ -1,5 +1,3 @@
-var roomUtils = require('strategy.roomUtils');
-
 var desired_population = 
 {
 	'harvester': {'count': 4, type: 'worker'},
