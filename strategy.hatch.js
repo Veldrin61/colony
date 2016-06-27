@@ -18,6 +18,7 @@ var hatch = {
 			if(cnt < desired_population[key].count){
 				var src_id = Math.random() % 2;
 				Game.spawns.Spawn.createCreep( desired_population[key].setup, key + (cnt+1), {role: key, source_id: src_id} );
+				console.log('spawning:' + key);
 				return;
 			}
 		}
