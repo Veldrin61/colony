@@ -8,8 +8,15 @@ var desired_population =
 	'repairer': {'count': 1, type: 'worker'}
 };
 
+var maxEnergy = function(spawn){
+		var fromSpawn = 300; // spawn
+		var level = spawn.room.controller.level;
+		var fromExts = spawn.room.find(STRUCTURE_EXTENSION).length * EXTENSION_ENERGY_CAPACITY[level];
+		return fromSpawn + fromExts;
+	};
+
 var composeWorker = function(spawn) {
-	var total = roomUtils.run(spawn) - BODYPART_COST['move'];
+	var total = maxEnergy(spawn) - BODYPART_COST['move'];
 	var result = [MOVE];
 	for(var i=0; i<total; ++i){
 		result.push(WORK);
