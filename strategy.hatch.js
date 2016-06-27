@@ -16,7 +16,7 @@ var maxEnergy = function(spawn) {
 var composeWorker = function(spawn) {
 	var total = maxEnergy(spawn) - BODYPART_COST['move'];
 	var result = [MOVE];
-	for(var i=0; i<total; ++i){
+	for(var i=0; i<total / (BODYPART_COST['work'] + BODYPART_COST['carry']); ++i){
 		result.push(WORK);
 		result.push(CARRY);
 		total -= BODYPART_COST['work'] + BODYPART_COST['carry'];
