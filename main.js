@@ -21,7 +21,7 @@ module.exports.loop = function () {
             continue;
         }
 
-        if(Math.random() > 0.5) {
+        if(Math.random() > 0.5 && creep.ticksToLive <= 1200) {
             Game.spawns.Spawn.renewCreep(creep);
         }
         roleModel[creep.memory.role].run(creep);
