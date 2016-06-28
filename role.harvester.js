@@ -8,25 +8,18 @@ var roleHarvester = {
             src_find.run(creep);
         }
         else {
-            var ext_tow = creep.room.find(FIND_STRUCTURES, {
+            var target = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION ||
+                                structure.structureType == STRUCTURE_SPAWN ||
                                 structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                     }
             });
-            var spwn = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return structure.structureType == STRUCTURE_SPAWN && structure.energy < structure.energyCapacity;
-                    }
-            });
-            if(ext_tow.length > 0) {
-                if(creep.transfer(ext_tow[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(ext_tow[0]);
-                }
-            }
-            else if(spwn.length > 0){
-                if(creep.transfer(spwn[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(spwn[0]);
+            target = _.sortBy(ext_tow, (str) => {return str.energyCapacity - str.energy});
+            
+            if(target.length > 0) {
+                if(creep.transfer(target[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target[0]);
                 }
             }
             else {
