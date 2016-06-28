@@ -15,12 +15,14 @@ module.exports.loop = function () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
 
-        if(creep.ticksToLive <= 600){
+        if(creep.ticksToLive <= 600) {
             creep.moveTo(Game.spawns.Spawn);
             continue;
         }
 
-        Game.spawns.Spawn.renewCreep(creep);
+        if(Math.random() > 0.5) {
+            Game.spawns.Spawn.renewCreep(creep);
+        }
         roleModel[creep.memory.role].run(creep);
     }
 }
