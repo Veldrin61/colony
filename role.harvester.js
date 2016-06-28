@@ -15,7 +15,7 @@ var roleHarvester = {
                                 structure.structureType == STRUCTURE_TOWER) && structure.energy < structure.energyCapacity;
                     }
             });
-            target = _.sortBy(target, (str) => {return str.energyCapacity - str.energy});
+            target = _.sortBy(target, (str) => {return -(str.energyCapacity - str.energy)});
             
             if(target.length > 0) {
                 if(creep.transfer(target[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
