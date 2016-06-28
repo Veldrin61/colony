@@ -2,8 +2,8 @@ var desired_population =
 {
 	'harvester': {'count': 6, type: 'worker'},
 	'builder': {'count': 4, type: 'worker'},
-	'upgrader': {'count': 6, type: 'worker'},
-	'repairer': {'count': 2, type: 'worker'}
+	'upgrader': {'count': 8, type: 'worker'},
+	'repairer': {'count': 6, type: 'worker'}
 };
 
 var maxEnergy = function(spawn) {
@@ -17,7 +17,7 @@ var maxEnergy = function(spawn) {
 var composeWorker = function(spawn) {
 	var total = maxEnergy(spawn) - 2*BODYPART_COST['move'];
 	var result = [MOVE, MOVE];
-	for(var i=0; i<total / (BODYPART_COST['work'] + BODYPART_COST['carry']); ++i){
+	while(total > BODYPART_COST['work'] + BODYPART_COST['carry']){
 		result.push(WORK);
 		result.push(CARRY);
 		total -= BODYPART_COST['work'] + BODYPART_COST['carry'];
