@@ -4,7 +4,7 @@ var space = {
 
 		var leftRoomKey = Game.map.describeExits('E36S7')['7'];
 		//rooms.push(Game.rooms[leftRoomKey]);
-		console.log(rooms);
+		
 
 		return {
 			find: function(query){
