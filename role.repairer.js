@@ -1,4 +1,5 @@
 var src_find = require('tactics.sourceSelect')
+var space = require('strategy.space').run();
 
 var repairer = {
 	run: function(creep) {
@@ -10,10 +11,10 @@ var repairer = {
         }
 
         if(creep.memory.repairing) {
-            var targets = creep.room.find(FIND_STRUCTURES);
+            var targets = space.find(FIND_STRUCTURES);
             targets = _.filter(targets, (str) => {
-            	var isWall = str.type == STRUCTURE_WALL;
-            	return isWall && str.hits <= 50000 || str.hits < str.hitsMax * 0.8;
+            	var isWall = str.structureType == STRUCTURE_WALL;
+            	return isWall && str.hits <= 50000 || !isWall && str.hits < str.hitsMax * 0.8;
             });
             if(targets.length) {
                 if(creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {

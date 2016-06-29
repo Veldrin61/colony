@@ -1,4 +1,5 @@
 var src_find = require('tactics.sourceSelect')
+var space = require('strategy.space').run();
 
 var roleHarvester = {
 
@@ -8,7 +9,7 @@ var roleHarvester = {
             src_find.run(creep);
         }
         else {
-            var target = creep.room.find(FIND_STRUCTURES, {
+            var target = space.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION ||
                                 structure.structureType == STRUCTURE_SPAWN ||

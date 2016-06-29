@@ -1,3 +1,5 @@
+var space = require('stratedy.space').run();
+
 var desired_population = 
 {
 	'harvester': {'count': 6, type: 'worker'},
@@ -15,8 +17,8 @@ var maxEnergy = function(spawn) {
 };
 
 var composeWorker = function(spawn) {
-	var total = maxEnergy(spawn) - 2*BODYPART_COST['move'];
-	var result = [MOVE, MOVE];
+	var total = maxEnergy(spawn) - 3*BODYPART_COST['move'];
+	var result = [MOVE, MOVE, MOVE];
 	while(total > BODYPART_COST['work'] + BODYPART_COST['carry']){
 		result.push(WORK);
 		result.push(CARRY);
@@ -39,7 +41,18 @@ var hatch = {
 		    var cnt = _.filter(creeps, function(o) {return o.memory.role == key;}).length;
 		    
 			if(cnt < desired_population[key].count){
-				var src_id = (Math.floor(Math.random() * (1000 - 10)) + 10) % 2;
+				var src_count = space.find(FIND_SOURCES).length;
+				var src_id_seed = Math.random();
+				var src_edge = 1/src_count;
+				var src_id = 0;
+				for(var j=0; j<src_count; ++j){
+					if(src_id_seed > src_edge - 1/src_count && src_id_seed < src_edge){
+						src_id = j;
+						break;
+					}
+					src_edge += 1/src_count;
+				}
+
 				for(var j=0; j<desired_population[key].count; ++j) {
 					var xst = Game.creeps[key + j];
 					if(!xst) {

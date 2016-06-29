@@ -1,4 +1,5 @@
-var src_find = require('tactics.sourceSelect')
+var src_find = require('tactics.sourceSelect');
+var space = require('strategy.space').run();
 
 var roleBuilder = {
 
@@ -13,7 +14,7 @@ var roleBuilder = {
         }
 
         if(creep.memory.building) {
-            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+            var targets = space.find(FIND_CONSTRUCTION_SITES);
             if(targets.length) {
                 if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0]);
