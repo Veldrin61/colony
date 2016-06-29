@@ -9,7 +9,7 @@ var space = {
 			find: function(query){
 				var result = [];
 				for(var i=0; i<rooms.length; ++i){
-					result.concat(rooms.find(query));
+					result.concat(rooms[i].find(query));
 				}
 				return result;
 			}
