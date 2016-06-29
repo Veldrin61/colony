@@ -1,4 +1,4 @@
-var space = require('stratedy.space').run();
+var space = require('strategy.space').run();
 
 var desired_population = 
 {
