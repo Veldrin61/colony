@@ -3,7 +3,7 @@ var space = {
 		var rooms = [Game.spawns.Spawn.room];
 
 		var leftRoomKey = Game.map.describeExits('E36S7')['7'];
-		rooms.push(Game.rooms[leftRoomKey]);
+		//rooms.push(Game.rooms[leftRoomKey]);
 		console.log(rooms);
 
 		return {
